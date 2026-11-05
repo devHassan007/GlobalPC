@@ -18,7 +18,7 @@
 
 /* On the dark footer the logo sits on a white tile so it stays readable */
 .footer .brand .brand-mark {
-    background: #fff;
+    /* background: #fff; */
     padding: 10px 16px;
     border-radius: 6px
 }
