@@ -1,5 +1,6 @@
 import socialIconPaths from "../socialIcons";
-import { socials } from "../data/siteData";
+import { LOGO, socials } from "../data/siteData";
+import "../logo.css";
 import SmartLink from "./SmartLink";
 
 function SocialIcon({ name }) {
@@ -10,7 +11,7 @@ export default function Footer() {
     return <footer className="footer" data-testid="footer">
         <div className="container footer-grid">
             <div className="footer-brand">
-                <SmartLink href="/" className="brand" data-testid="footer-brand-link"><span className="brand-mark">GP</span><span>GLOBAL PASS<small>CONSULTANTS</small></span></SmartLink>
+                <SmartLink href="/" className="brand" data-testid="footer-brand-link"><span className="brand-mark"><img src={LOGO} alt="Global Pass Consultants" /></span></SmartLink>
                 <p>Helping you navigate global opportunities with clarity, care, and confidence.</p>
                 <div className="footer-sister"><small>SISTER COMPANY</small><strong>Marsos Business Management</strong></div>
             </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, Sparkles, X } from "lucide-react";
-import { CONSULT_MAIL, navItems } from "../data/siteData";
+import { CONSULT_MAIL, LOGO, navItems } from "../data/siteData";
+import "../logo.css";
 import SmartLink from "./SmartLink";
 import Button from "./Button";
 
@@ -18,7 +19,7 @@ export default function Header() {
     return <>
         <div className="announcement" data-testid="announcement-bar"><span><Sparkles size={14} /> Your global journey starts here</span><span className="announcement-note">Personalized guidance. Clear direction. Global possibilities.</span></div>
         <header className={`site-header ${scrolled ? "is-scrolled" : ""}`} data-testid="site-header">
-            <SmartLink href="/" className="brand" data-testid="brand-link"><span className="brand-mark">GP</span><span>GLOBAL PASS<small>CONSULTANTS</small></span></SmartLink>
+            <SmartLink href="/" className="brand" data-testid="brand-link"><span className="brand-mark"><img src={LOGO} alt="Global Pass Consultants" /></span></SmartLink>
             <nav className="desktop-nav" aria-label="Primary navigation">
                 {navItems.map(({ label, href, children }) => <div className="nav-item" key={label}>
                     <SmartLink href={href} className="nav-link" data-testid={`nav-${label.toLowerCase()}`}>{label}<ChevronDown size={12} /></SmartLink>

@@ -1,0 +1,30 @@
+/* Logo image in the header and footer (replaces the "GP" box and text) */
+.brand .brand-mark {
+    width: auto;
+    height: auto;
+    border: 0;
+    display: block;
+    line-height: 0
+}
+
+.brand .brand-mark img {
+    display: block;
+    width: auto;
+    height: 54px;
+    max-width: 200px;
+    object-fit: contain
+}
+
+/* On the dark footer the logo sits on a white tile so it stays readable */
+.footer .brand .brand-mark {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 6px
+}
+
+.footer .brand .brand-mark img { height: 52px }
+
+@media (max-width: 520px) {
+    .brand .brand-mark img { height: 44px; max-width: 170px }
+    .footer .brand .brand-mark img { height: 46px }
+}
