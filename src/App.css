@@ -1098,7 +1098,8 @@ h2 em {
 .footer {
     background: #0c2037;
     color: #cad6e0;
-    padding: 100px 0 25px
+    padding: 70px 0 25px;
+    padding-inline-start: 5vw;
 }
 
 .footer-grid {
