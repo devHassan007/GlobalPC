@@ -1,7 +1,7 @@
 import { BriefcaseBusiness, Building2, Compass, GraduationCap } from "lucide-react";
 
 // Logo file in the public/images folder. Change the name here if yours is different (for example logo.png).
-export const LOGO = "/images/logo.jpeg";
+export const LOGO = "/images/logo.png";
 
 export const CONSULT_MAIL = "mailto:tahiracca11@gmail.com?subject=Book%20a%20Consultation";
 
