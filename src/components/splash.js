@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "../splash.css";
 
-const TOTAL_MS = 3000; // how long the logo screen stays up
-const FADE_MS = 400;   // fade-out at the end (included in TOTAL_MS)
+const TOTAL_MS = 5000; // how long the logo screen stays up
+const FADE_MS = 600;   // fade-out at the end (included in TOTAL_MS)
 
 // Full-screen logo screen shown on every page load. `onDone` is called when it has finished fading out.
 export default function Splash({ onDone }) {
