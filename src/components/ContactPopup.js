@@ -6,7 +6,7 @@ import "../contactPopup.css";
 // Where the form is sent. Create a free form at https://formspree.io (or any service that accepts a JSON POST),
 // then paste its URL here, e.g. "https://formspree.io/f/abcdwxyz". Leave it empty and the form opens the
 // visitor's email app with the message filled in instead.
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "hassanshahbaz738@gmail.com";
 const TO_EMAIL = "hassanshahbaz738@gmail.com";
 const SHOW_DELAY_MS = 1200;       // how long after the page loads before the popup appears
 const SESSION_KEY = "gpc-contact-popup-seen"; // popup shows once per browser session; change the key to show it again
