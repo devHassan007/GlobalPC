@@ -23,7 +23,7 @@ export default function App() {
     return <BrowserRouter>
         {!splashDone && <Splash onDone={finishSplash} />}
         <ScrollManager />
-        {/* <ContactPopup ready={splashDone} /> */}
+        <ContactPopup ready={splashDone} />
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/destinations/south-korea" element={<SouthKorea />} />
