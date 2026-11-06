@@ -6,16 +6,18 @@ import "../contactPopup.css";
 // Where the form is sent. Create a free form at https://formspree.io (or any service that accepts a JSON POST),
 // then paste its URL here, e.g. "https://formspree.io/f/abcdwxyz". Leave it empty and the form opens the
 // visitor's email app with the message filled in instead.
-const FORM_ENDPOINT = "https://formspree.io/f/xgaaqbkv";
-const TO_EMAIL = "hassanshahbaz738@gmail.com";
+const FORM_ENDPOINT = "";
+const TO_EMAIL = "tahiracca11@gmail.com";
 const SHOW_DELAY_MS = 1200;       // how long after the page loads before the popup appears
 const SESSION_KEY = "gpc-contact-popup-seen"; // popup shows once per browser session; change the key to show it again
+const SHOW_IN_DEV = false;        // false: hidden while you run `yarn start`. Set to true when you want to test the popup locally.
+const OWNER_KEY = "gpc-owner";    // visit yoursite.com/?owner=1 once in your browser to hide the popup for you; /?owner=0 turns it back on
 // ---------------------------------------------------------------------------------------------
 
 const interests = ["Study in South Korea", "Study in Europe / Schengen", "Study in the UK", "Study in the USA", "Study in Canada", "Study in Australia / New Zealand", "Work abroad", "Visit / tourist visa", "UAE business setup", "Something else"];
 const empty = { name: "", phone: "", email: "", interest: "", message: "", company: "" }; // "company" is a hidden spam trap
 
-export default function ContactPopup() {
+export default function ContactPopup({ ready = true }) {
     const [open, setOpen] = useState(false);
     const [values, setValues] = useState(empty);
     const [errors, setErrors] = useState({});
@@ -24,12 +26,21 @@ export default function ContactPopup() {
 
     // Show once per session, shortly after the visitor arrives.
     useEffect(() => {
+        if (!ready) return;
+        if (process.env.NODE_ENV === "development" && !SHOW_IN_DEV) return;
         let seen = false;
-        try { seen = sessionStorage.getItem(SESSION_KEY) === "1"; } catch { /* storage blocked: show anyway */ }
-        if (seen) return;
+        let owner = false;
+        try {
+            const flag = new URLSearchParams(window.location.search).get("owner");
+            if (flag === "1") localStorage.setItem(OWNER_KEY, "1");
+            if (flag === "0") localStorage.removeItem(OWNER_KEY);
+            owner = localStorage.getItem(OWNER_KEY) === "1";
+            seen = sessionStorage.getItem(SESSION_KEY) === "1";
+        } catch { /* storage blocked: show anyway */ }
+        if (owner || seen) return;
         const t = setTimeout(() => setOpen(true), SHOW_DELAY_MS);
         return () => clearTimeout(t);
-    }, []);
+    }, [ready]);
 
     const close = () => {
         setOpen(false);
