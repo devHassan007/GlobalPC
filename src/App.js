@@ -1,6 +1,8 @@
+import { useCallback, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollManager from "./components/ScrollManager";
 import ContactPopup from "./components/ContactPopup";
+import Splash from "./components/Splash";
 import Home from "./pages/Home";
 import SouthKorea from "./pages/SouthKorea";
 import UnitedKingdom from "./pages/UnitedKingdom";
@@ -14,9 +16,13 @@ import "./App.css";
 
 // To add a destination: create src/pages/<Name>.js, add a route below, and add it to `destinations` in src/data/siteData.js.
 export default function App() {
+    // The logo screen shows on every full page load; the contact popup waits until it has finished.
+    const [splashDone, setSplashDone] = useState(false);
+    const finishSplash = useCallback(() => setSplashDone(true), []);
     return <BrowserRouter>
+        {!splashDone && <Splash onDone={finishSplash} />}
         <ScrollManager />
-        <ContactPopup />
+        <ContactPopup ready={splashDone} />
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/destinations/south-korea" element={<SouthKorea />} />
