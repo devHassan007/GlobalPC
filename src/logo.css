@@ -25,7 +25,8 @@
 
 .footer .brand .brand-mark img {
     height: 100px;
-    max-width: 300px
+    max-width: 300px;
+    background: #fff;
 }
 
 @media (max-width: 900px) {

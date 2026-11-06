@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollManager from "./components/ScrollManager";
+import ContactPopup from "./components/ContactPopup";
 import Home from "./pages/Home";
 import SouthKorea from "./pages/SouthKorea";
 import UnitedKingdom from "./pages/UnitedKingdom";
@@ -15,6 +16,7 @@ import "./App.css";
 export default function App() {
     return <BrowserRouter>
         <ScrollManager />
+        <ContactPopup />
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/destinations/south-korea" element={<SouthKorea />} />
