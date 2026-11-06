@@ -11,7 +11,7 @@ import Australia from "./pages/Australia";
 import NewZealand from "./pages/NewZealand";
 import Europe from "./pages/Europe";
 import Austria from "./pages/Austria";
-import Splash from "./components/splash";
+import Splash from "./components/Splash";
 
 import "./App.css";
 
@@ -23,7 +23,7 @@ export default function App() {
     return <BrowserRouter>
         {!splashDone && <Splash onDone={finishSplash} />}
         <ScrollManager />
-        <ContactPopup ready={splashDone} />
+        {/* <ContactPopup ready={splashDone} /> */}
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/destinations/south-korea" element={<SouthKorea />} />
