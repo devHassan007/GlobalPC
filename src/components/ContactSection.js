@@ -72,12 +72,12 @@ export default function ContactSection() {
         const phone = `${values.code} ${values.phone}`;
         const details = { name: fullName, email: values.email, phone, destination: values.destination, start: values.start, counselling: values.counselling, funding: values.funding, level: values.level, updates: values.updates ? "Yes" : "No" };
 
-        if (!FORM_ENDPOINT) {
-            const lines = [`Name: ${fullName}`, `Email: ${values.email}`, `Mobile: ${phone}`, `Preferred study destination: ${values.destination}`, `Start studying: ${values.start}`, `Preferred counselling: ${values.counselling}`, `Funding: ${values.funding}`, `Study level: ${values.level}`, `Wants updates and offers: ${details.updates}`];
-            window.location.href = `mailto:${TO_EMAIL}?subject=${encodeURIComponent("Website enquiry from " + fullName)}&body=${encodeURIComponent(lines.join("\n"))}`;
-            setStatus("sent");
-            return;
-        }
+        // if (!FORM_ENDPOINT) {
+        //     const lines = [`Name: ${fullName}`, `Email: ${values.email}`, `Mobile: ${phone}`, `Preferred study destination: ${values.destination}`, `Start studying: ${values.start}`, `Preferred counselling: ${values.counselling}`, `Funding: ${values.funding}`, `Study level: ${values.level}`, `Wants updates and offers: ${details.updates}`];
+        //     window.location.href = `mailto:${TO_EMAIL}?subject=${encodeURIComponent("Website enquiry from " + fullName)}&body=${encodeURIComponent(lines.join("\n"))}`;
+        //     setStatus("sent");
+        //     return;
+        // }
         setStatus("sending");
         setFailMsg("");
         try {

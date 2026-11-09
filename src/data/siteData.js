@@ -76,6 +76,6 @@ export const navItems = [
     { label: "Services", href: "/#services", children: services.map(([, title]) => [title, `/#${slugify(title)}`]) },
     { label: "Destinations", href: "/#destinations", children: [...destinations.map(([name, , , href]) => [name, href]), ["UAE Business Setup", "/#marsos"]] },
     { label: "Insights", href: "/#insights", children: insights.map(([, , title]) => [title, `/#insight-${slugify(title)}`]) },
-    { label: "Stories", href: "/#stories", children: [["Stories in the Making", "/#stories"], ["Share Your Story", "mailto:tahiracca11@gmail.com?subject=Share%20your%20story"]] },
-    { label: "Contact", href: "/#contact", children: [["Book a Consultation", CONSULT_LINK], ["Call +92 300 7277495", "tel:+923007277495"], ["Email Us", "mailto:tahiracca11@gmail.com"], ["FAQs", "/#faq"]] }
+    { label: "Stories", href: "/#stories", children: [["Stories in the Making", "/#stories"], ["Share Your Story", "mailto:hello@globalpassconsultants.com?subject=Share%20your%20story"]] },
+    { label: "Contact", href: "/#contact", children: [["Book a Consultation", CONSULT_LINK], ["Call +92 300 7277495", "tel:+923007277495"], ["Email Us", "mailto:hello@globalpassconsultants.com"], ["FAQs", "/#faq"]] }
 ];

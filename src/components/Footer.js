@@ -26,7 +26,7 @@ export default function Footer() {
                 <h4>Connect</h4>
                 <a href="tel:+923007277495" data-testid="footer-phone-one">+92 300 7277495</a>
                 <a href="tel:+923016640828" data-testid="footer-phone-two">+92 301 6640828</a>
-                <a href="mailto:tahiracca11@gmail.com" data-testid="footer-email">tahiracca11@gmail.com</a>
+                <a href="mailto:hello@globalpassconsultants.com" data-testid="footer-email">hello@globalpassconsultants.com</a>
                 <p className="address" data-testid="footer-address">Hafizabad Road, Pindi Bhattian,<br />Punjab, Pakistan</p>
                 <div className="footer-social" data-testid="footer-social">{socials.map(([label, icon, href]) => <a key={label} className="social-link" href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} data-testid={`social-${icon}`}><SocialIcon name={icon} /></a>)}</div>
             </div>
