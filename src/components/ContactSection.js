@@ -28,7 +28,10 @@ export default function ContactSection() {
     const [values, setValues] = useState(empty);
     const [errors, setErrors] = useState({});
     const [status, setStatus] = useState("idle"); // idle | sending | sent | failed
+    const [summary, setSummary] = useState(false); // "please complete the highlighted fields" message
+    const [failMsg, setFailMsg] = useState("");      // reason given by the server when sending fails
     const firstField = useRef(null);
+    const formRef = useRef(null);
 
     const set = (field) => (e) => {
         const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -54,10 +57,16 @@ export default function ContactSection() {
 
     const submit = async (e) => {
         e.preventDefault();
-        if (values.company) return; // spam bot filled the hidden field
         const found = validate();
         setErrors(found);
-        if (Object.keys(found).length) return;
+        setSummary(Object.keys(found).length > 0);
+        if (Object.keys(found).length) {
+            // The form is long, so jump to the first field that needs attention.
+            const first = formRef.current?.querySelector(`[name="${Object.keys(found)[0]}"]`);
+            first?.scrollIntoView({ behavior: "smooth", block: "center" });
+            first?.focus({ preventScroll: true });
+            return;
+        }
 
         const fullName = `${values.firstName.trim()} ${values.lastName.trim()}`;
         const phone = `${values.code} ${values.phone}`;
@@ -70,16 +79,24 @@ export default function ContactSection() {
             return;
         }
         setStatus("sending");
+        setFailMsg("");
         try {
             const res = await fetch(FORM_ENDPOINT, {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Accept: "application/json" },
-                body: JSON.stringify({ ...details, _subject: `Website enquiry from ${fullName}` })
+                // "_gotcha" is Formspree's built-in spam trap: real visitors leave it empty.
+                body: JSON.stringify({ ...details, _subject: `Website enquiry from ${fullName}`, _gotcha: values.company })
             });
-            if (!res.ok) throw new Error("Request failed");
+            if (!res.ok) {
+                let reason = "";
+                try { const data = await res.json(); reason = (data.errors || []).map((x) => x.message).join(" ") || data.error || ""; } catch { /* no JSON body */ }
+                throw new Error(reason || `Request failed (${res.status})`);
+            }
             setStatus("sent");
             setValues(empty);
-        } catch {
+        } catch (err) {
+            console.error("Enquiry form failed to send:", err);
+            setFailMsg(err.message || "");
             setStatus("failed");
         }
     };
@@ -100,7 +117,7 @@ export default function ContactSection() {
                     <h3>{FORM_ENDPOINT ? "Thank you, we have your enquiry." : "Almost done."}</h3>
                     <p>{FORM_ENDPOINT ? "A member of our team will contact you shortly." : "Your email app should have opened with your enquiry ready. Press send there to reach us."}</p>
                     <button type="button" className="contact-again" onClick={another}>Send another enquiry</button>
-                </div> : <form className="cf-form" onSubmit={submit} noValidate data-testid="contact-form">
+                </div> : <form className="cf-form" ref={formRef} onSubmit={submit} noValidate data-testid="contact-form">
                     <div className="cf-grid">
                         <Field label="First name*" error={errors.firstName}><input ref={firstField} type="text" name="firstName" autoComplete="given-name" value={values.firstName} onChange={set("firstName")} aria-invalid={!!errors.firstName} /></Field>
                         <Field label="Last name*" error={errors.lastName}><input type="text" name="lastName" autoComplete="family-name" value={values.lastName} onChange={set("lastName")} aria-invalid={!!errors.lastName} /></Field>
@@ -114,14 +131,15 @@ export default function ContactSection() {
                     </div>
 
                     <div className="cf-checks">
-                        <label className={`cf-check ${errors.agree ? "has-error" : ""}`}><input type="checkbox" checked={values.agree} onChange={set("agree")} /><span>I agree to the Global Pass <a href="/#contact">Terms</a> and <a href="/#contact">Privacy Policy</a> *</span></label>
-                        <label className={`cf-check ${errors.consent ? "has-error" : ""}`}><input type="checkbox" checked={values.consent} onChange={set("consent")} /><span>Please contact me by phone, email, WhatsApp or SMS to assist with my enquiry *</span></label>
-                        <label className="cf-check"><input type="checkbox" checked={values.updates} onChange={set("updates")} /><span>I would like to receive updates and offers from Global Pass</span></label>
+                        <label className={`cf-check ${errors.agree ? "has-error" : ""}`}><input type="checkbox" name="agree" checked={values.agree} onChange={set("agree")} /><span>I agree to the Global Pass <a href="/#contact">Terms</a> and <a href="/#contact">Privacy Policy</a> *</span></label>
+                        <label className={`cf-check ${errors.consent ? "has-error" : ""}`}><input type="checkbox" name="consent" checked={values.consent} onChange={set("consent")} /><span>Please contact me by phone, email, WhatsApp or SMS to assist with my enquiry *</span></label>
+                        <label className="cf-check"><input type="checkbox" name="updates" checked={values.updates} onChange={set("updates")} /><span>I would like to receive updates and offers from Global Pass</span></label>
                         {(errors.agree || errors.consent) && <em className="cf-error">{errors.agree || errors.consent}</em>}
                     </div>
 
-                    <input className="cf-trap" type="text" name="company" tabIndex="-1" autoComplete="off" aria-hidden="true" value={values.company} onChange={set("company")} />
-                    {status === "failed" && <p className="cf-fail" role="alert">Sorry, that didn’t go through. Please try again or call +92 300 7277495.</p>}
+                    <input className="cf-trap" type="text" name="_gotcha" tabIndex="-1" autoComplete="off" aria-hidden="true" value={values.company} onChange={set("company")} />
+                    {summary && <p className="cf-fail" role="alert">Please complete the highlighted fields above.</p>}
+                    {status === "failed" && <p className="cf-fail" role="alert">Sorry, that didn’t go through{failMsg ? ` (${failMsg})` : ""}. Please try again or call +92 300 7277495.</p>}
                     <button type="submit" className="cf-submit" disabled={status === "sending"} data-testid="contact-submit">{status === "sending" ? "Sending..." : "Enquire now"}</button>
                 </form>}
             </div>
