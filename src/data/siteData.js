@@ -1,9 +1,9 @@
 import { BriefcaseBusiness, Building2, Compass, GraduationCap } from "lucide-react";
 
 // Logo file in the public/images folder. Change the name here if yours is different (for example logo.png).
-export const LOGO = "/images/logo.png";
+export const LOGO = "/images/logo.jpeg";
 
-export const CONSULT_MAIL = "mailto:tahiracca11@gmail.com?subject=Book%20a%20Consultation";
+export const CONSULT_LINK = "/#contact"; // every "Book a Consultation" button goes to the contact section on the home page
 
 export const images = {
     hero: "https://images.unsplash.com/photo-1758413355194-353da4fa09c1?auto=format&fit=crop&w=1800&q=85",
@@ -47,7 +47,7 @@ export const destinations = [
 
 export const insights = [
     [images.study, "STUDY ABROAD", "How to prepare for studying abroad", "A clear starting point for researching destinations, programs, and your preparation."],
-    [images.korea, "SOUTH KOREA", "Understanding scholarship opportunities in South Korea", "An introduction to the questions worth asking as you explore scholarship pathways."],
+    [images.scholarship, "SOUTH KOREA", "Understanding scholarship opportunities in South Korea", "An introduction to the questions worth asking as you explore scholarship pathways."],
     [images.business, "UAE BUSINESS", "What to consider before setting up a business in the UAE", "The early considerations that help turn a big idea into a more informed conversation."]
 ];
 
@@ -77,5 +77,5 @@ export const navItems = [
     { label: "Destinations", href: "/#destinations", children: [...destinations.map(([name, , , href]) => [name, href]), ["UAE Business Setup", "/#marsos"]] },
     { label: "Insights", href: "/#insights", children: insights.map(([, , title]) => [title, `/#insight-${slugify(title)}`]) },
     { label: "Stories", href: "/#stories", children: [["Stories in the Making", "/#stories"], ["Share Your Story", "mailto:tahiracca11@gmail.com?subject=Share%20your%20story"]] },
-    { label: "Contact", href: "/#contact", children: [["Book a Consultation", CONSULT_MAIL], ["Call +92 300 7277495", "tel:+923007277495"], ["Email Us", "mailto:tahiracca11@gmail.com"], ["FAQs", "/#faq"]] }
+    { label: "Contact", href: "/#contact", children: [["Book a Consultation", CONSULT_LINK], ["Call +92 300 7277495", "tel:+923007277495"], ["Email Us", "mailto:tahiracca11@gmail.com"], ["FAQs", "/#faq"]] }
 ];

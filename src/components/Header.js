@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, Sparkles, X } from "lucide-react";
-import { CONSULT_MAIL, LOGO, navItems } from "../data/siteData";
+import { CONSULT_LINK, LOGO, navItems } from "../data/siteData";
 import "../logo.css";
 import SmartLink from "./SmartLink";
 import Button from "./Button";
@@ -26,7 +26,7 @@ export default function Header() {
                     <div className="nav-dropdown" data-testid={`nav-dropdown-${label.toLowerCase()}`}>{children.map(([childLabel, childHref]) => <SmartLink key={childLabel} href={childHref}>{childLabel}</SmartLink>)}</div>
                 </div>)}
             </nav>
-            <Button href={CONSULT_MAIL} data-testid="header-consultation-button">Book a Consultation</Button>
+            <Button href={CONSULT_LINK} data-testid="header-consultation-button">Book a Consultation</Button>
             <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} data-testid="mobile-menu-button">{menuOpen ? <X /> : <Menu />}</button>
             {menuOpen && <nav className="mobile-nav" aria-label="Mobile navigation">
                 {navItems.map(({ label, href, children }) => {
@@ -40,7 +40,7 @@ export default function Header() {
                         {open && <div className="mobile-sub" data-testid={`mobile-dropdown-${key}`}>{children.map(([childLabel, childHref]) => <SmartLink onClick={closeMenu} key={childLabel} href={childHref}>{childLabel}</SmartLink>)}</div>}
                     </div>;
                 })}
-                <Button href={CONSULT_MAIL} data-testid="mobile-consultation-button">Book a Consultation</Button>
+                <Button href={CONSULT_LINK} data-testid="mobile-consultation-button">Book a Consultation</Button>
             </nav>}
         </header>
     </>;

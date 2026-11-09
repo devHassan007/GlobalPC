@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { CONSULT_MAIL, destinations } from "../data/siteData";
+import { CONSULT_LINK, destinations } from "../data/siteData";
 import Header from "./Header";
 import Footer from "./Footer";
 import Button from "./Button";
@@ -12,11 +12,11 @@ const idFor = (text) => text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/
 // Shared layout for every page in src/pages. Each page file only supplies its content.
 // article.sections: [{ heading, paragraphs?, list?, table?: { head, rows, note? }, callout?: { title, text } }]
 // list items: "plain text" or ["Bold lead-in", "rest of the sentence"]
-export default function DestinationPage({ name, eyebrow, title, titleEm, lead, image, imageAlt, facts = [], article, mailSubject }) {
+export default function DestinationPage({ name, eyebrow, title, titleEm, lead, image, imageAlt, facts = [], article }) {
     useEffect(() => { document.title = `${name} | Global Pass Consultants`; }, [name]);
     const index = destinations.findIndex(([n]) => n === name);
     const others = [1, 2, 3, 4].map((step) => destinations[(index + step) % destinations.length]);
-    const mail = `mailto:tahiracca11@gmail.com?subject=${encodeURIComponent(mailSubject || `${name} Enquiry`)}`;
+    const mail = CONSULT_LINK;
 
     return <div className="site-shell">
         <Header />

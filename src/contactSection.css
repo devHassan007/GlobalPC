@@ -1,0 +1,234 @@
+/* Contact section on the home page (id="contact"). Uses the tokens from App.css (--navy, --gold, --line ...). */
+.contact-section {
+    background: var(--navy);
+    color: #fff;
+    padding: 110px 0;
+    scroll-margin-top: 80px
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 80px;
+    align-items: center
+}
+
+.contact-info h2 {
+    color: #fff;
+    font-size: clamp(44px, 5.2vw, 72px);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -.055em;
+    margin: 0
+}
+
+.contact-info h2 em {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-weight: 500
+}
+
+.contact-lead {
+    color: #cbd7e1;
+    max-width: 440px;
+    line-height: 1.75;
+    margin: 24px 0 34px;
+    font-size: 15px
+}
+
+.contact-details {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 18px;
+    max-width: 440px
+}
+
+.contact-details li {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #d8e0e9;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, .14)
+}
+
+.contact-details svg {
+    color: var(--gold);
+    flex: none;
+    margin-top: 3px
+}
+
+.contact-details a {
+    transition: color .2s
+}
+
+.contact-details a:hover {
+    color: var(--gold)
+}
+
+.contact-card {
+    background: #fff;
+    color: var(--ink);
+    padding: 38px 36px;
+    border-top: 3px solid var(--gold);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .28)
+}
+
+.contact-card form {
+    display: grid;
+    gap: 16px
+}
+
+.contact-card-title {
+    font: 500 26px 'Playfair Display', serif;
+    color: var(--navy);
+    margin: 0 0 4px
+}
+
+.contact-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px
+}
+
+.contact-field {
+    display: grid;
+    gap: 7px;
+    min-width: 0
+}
+
+.contact-field span {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--navy)
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+    width: 100%;
+    font: 14px 'DM Sans', sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    padding: 12px 13px;
+    transition: border-color .2s, box-shadow .2s
+}
+
+.contact-field textarea {
+    resize: vertical;
+    min-height: 96px
+}
+
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(197, 166, 107, .25)
+}
+
+.contact-field input[aria-invalid="true"] {
+    border-color: #b3261e
+}
+
+.contact-error {
+    font-style: normal;
+    font-size: 11.5px;
+    color: #b3261e
+}
+
+.contact-trap {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0
+}
+
+.contact-fail {
+    margin: 0;
+    font-size: 13px;
+    color: #b3261e
+}
+
+.contact-submit {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    padding: 15px 20px
+}
+
+.contact-submit:disabled {
+    opacity: .7;
+    cursor: progress
+}
+
+.contact-success {
+    text-align: center;
+    padding: 40px 6px;
+    display: grid;
+    justify-items: center;
+    gap: 14px
+}
+
+.contact-tick {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: rgba(197, 166, 107, .18);
+    color: #a48145
+}
+
+.contact-success h3 {
+    font: 500 26px 'Playfair Display', serif;
+    color: var(--navy);
+    margin: 0
+}
+
+.contact-success p {
+    color: #68788b;
+    line-height: 1.7;
+    max-width: 340px;
+    margin: 0;
+    font-size: 14px
+}
+
+.contact-again {
+    border: 0;
+    background: none;
+    color: var(--navy);
+    font: 700 12px 'DM Sans', sans-serif;
+    border-bottom: 1px solid var(--gold);
+    padding: 0 0 6px;
+    cursor: pointer;
+    margin-top: 6px
+}
+
+@media (max-width: 900px) {
+    .contact-section {
+        padding: 80px 0
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 50px
+    }
+}
+
+@media (max-width: 520px) {
+    .contact-card {
+        padding: 28px 22px
+    }
+
+    .contact-row {
+        grid-template-columns: 1fr
+    }
+}
