@@ -7,7 +7,7 @@ export const CONSULT_MAIL = "mailto:tahiracca11@gmail.com?subject=Book%20a%20Con
 
 export const images = {
     hero: "https://images.unsplash.com/photo-1758413355194-353da4fa09c1?auto=format&fit=crop&w=1800&q=85",
-    korea: "https://images.unsplash.com/photo-1570191913384-7b4ff11716e7?auto=format&fit=crop&w=1200&q=85",
+    korea: "https://images.unsplash.com/photo-1758413355194-353da4fa09c1?auto=format&fit=crop&w=1800&q=85",
     office: "https://images.unsplash.com/photo-1758599543129-5269a8f29e68?auto=format&fit=crop&w=1200&q=85",
     london: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=80",
     usa: "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?auto=format&fit=crop&w=900&q=80",
