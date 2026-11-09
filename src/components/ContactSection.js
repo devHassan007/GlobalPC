@@ -7,8 +7,8 @@ import "../contactSection.css";
 // Where the form is sent. Create a free form at https://formspree.io (or any service that accepts a JSON POST),
 // then paste its URL here, e.g. "https://formspree.io/f/abcdwxyz". Leave it empty and the form opens the
 // visitor's email app with the message filled in instead.
-const FORM_ENDPOINT = "https://formspree.io/f/xgaaqbkv";
-const TO_EMAIL = "hello@globalpassconsultants.com";
+const FORM_ENDPOINT = "https://formspree.io/f/xqpprzeq";
+const TO_EMAIL = "hassanshahbaz738@gmail.com";
 // ---------------------------------------------------------------------------------------------
 
 // Dropdown choices. Edit these lists freely.
