@@ -1,28 +1,63 @@
-/* Contact section on the home page (id="contact"). Uses the tokens from App.css (--navy, --gold, --line ...). */
+/* Contact section on the home page (id="contact"): the form is shown on the page, in the same style as the old popup. */
 .contact-section {
-    background: var(--navy);
-    color: #fff;
+    background: #f0f3f6;
     padding: 110px 0;
     scroll-margin-top: 80px
 }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.05fr;
-    gap: 80px;
+.contact-head {
+    text-align: center;
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
     align-items: center
 }
 
-.contact-info h2 {
-    color: #fff;
-    font-size: clamp(44px, 5.2vw, 72px);
-    font-weight: 500;
-    line-height: 1.04;
-    letter-spacing: -.055em;
+.contact-head .eyebrow {
+    justify-content: center
+}
+
+.contact-head h2 {
     margin: 0
 }
 
-.contact-info h2 em {
+.contact-head>p:not(.eyebrow) {
+    color: #68788b;
+    max-width: 440px;
+    line-height: 1.7;
+    margin: 18px 0 0;
+    font-size: 15px
+}
+
+.contact-box {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    max-width: 1040px;
+    margin: 0 auto;
+    background: #fff;
+    border-top: 3px solid var(--gold);
+    box-shadow: 0 30px 70px rgba(20, 43, 74, .16)
+}
+
+.contact-side {
+    background: var(--navy);
+    color: #fff;
+    padding: 46px 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center
+}
+
+.contact-side h3 {
+    font-size: clamp(30px, 3.2vw, 40px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -.04em;
+    color: #fff;
+    margin: 0 0 18px
+}
+
+.contact-side h3 em {
     font-family: 'Playfair Display', serif;
     color: var(--gold);
     font-weight: 500
@@ -30,10 +65,9 @@
 
 .contact-lead {
     color: #cbd7e1;
-    max-width: 440px;
-    line-height: 1.75;
-    margin: 24px 0 34px;
-    font-size: 15px
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 30px
 }
 
 .contact-details {
@@ -41,8 +75,7 @@
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 18px;
-    max-width: 440px
+    gap: 16px
 }
 
 .contact-details li {
@@ -52,7 +85,7 @@
     font-size: 14px;
     line-height: 1.6;
     color: #d8e0e9;
-    padding-top: 18px;
+    padding-top: 16px;
     border-top: 1px solid rgba(255, 255, 255, .14)
 }
 
@@ -70,23 +103,13 @@
     color: var(--gold)
 }
 
-.contact-card {
-    background: #fff;
-    color: var(--ink);
-    padding: 38px 36px;
-    border-top: 3px solid var(--gold);
-    box-shadow: 0 30px 70px rgba(0, 0, 0, .28)
+.contact-formpanel {
+    padding: 42px 40px
 }
 
-.contact-card form {
+.contact-formpanel form {
     display: grid;
     gap: 16px
-}
-
-.contact-card-title {
-    font: 500 26px 'Playfair Display', serif;
-    color: var(--navy);
-    margin: 0 0 4px
 }
 
 .contact-row {
@@ -171,7 +194,7 @@
 
 .contact-success {
     text-align: center;
-    padding: 40px 6px;
+    padding: 50px 6px;
     display: grid;
     justify-items: center;
     gap: 14px
@@ -217,18 +240,29 @@
         padding: 80px 0
     }
 
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 50px
+    .contact-head {
+        margin-bottom: 36px
+    }
+
+    .contact-box {
+        grid-template-columns: 1fr
+    }
+
+    .contact-side {
+        padding: 34px 28px
+    }
+
+    .contact-formpanel {
+        padding: 32px 26px
     }
 }
 
 @media (max-width: 520px) {
-    .contact-card {
-        padding: 28px 22px
-    }
-
     .contact-row {
         grid-template-columns: 1fr
+    }
+
+    .contact-formpanel {
+        padding: 28px 20px
     }
 }
