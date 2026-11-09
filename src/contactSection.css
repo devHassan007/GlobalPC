@@ -1,172 +1,161 @@
-/* Contact section on the home page (id="contact"): the form is shown on the page, in the same style as the old popup. */
+/* Contact / enquiry form on the home page (id="contact"). Uses the tokens from App.css (--navy, --gold, --line ...). */
 .contact-section {
-    background: #f0f3f6;
-    padding: 110px 0;
+    background: #f2f7fa;
+    padding: 100px 0;
     scroll-margin-top: 80px
 }
 
-.contact-head {
-    text-align: center;
-    margin-bottom: 48px;
-    display: flex;
-    flex-direction: column;
+.contact-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    gap: 70px;
     align-items: center
 }
 
-.contact-head .eyebrow {
-    justify-content: center
-}
-
-.contact-head h2 {
+.contact-main h2 {
+    font-size: clamp(32px, 3.4vw, 44px);
+    line-height: 1.1;
     margin: 0
 }
 
-.contact-head>p:not(.eyebrow) {
-    color: #68788b;
-    max-width: 440px;
-    line-height: 1.7;
-    margin: 18px 0 0;
-    font-size: 15px
+.contact-rule {
+    display: block;
+    width: 34px;
+    height: 3px;
+    background: var(--gold);
+    margin: 14px 0 20px
 }
 
-.contact-box {
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-    max-width: 1040px;
-    margin: 0 auto;
-    background: #fff;
-    border-top: 3px solid var(--gold);
-    box-shadow: 0 30px 70px rgba(20, 43, 74, .16)
-}
-
-.contact-side {
-    background: var(--navy);
-    color: #fff;
-    padding: 46px 38px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center
-}
-
-.contact-side h3 {
-    font-size: clamp(30px, 3.2vw, 40px);
-    font-weight: 500;
-    line-height: 1.1;
-    letter-spacing: -.04em;
-    color: #fff;
-    margin: 0 0 18px
-}
-
-.contact-side h3 em {
-    font-family: 'Playfair Display', serif;
-    color: var(--gold);
-    font-weight: 500
-}
-
-.contact-lead {
-    color: #cbd7e1;
+.contact-intro {
+    color: #5b6b7e;
     font-size: 14px;
     line-height: 1.7;
-    margin: 0 0 30px
+    margin: 0 0 28px;
+    max-width: 560px
 }
 
-.contact-details {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: 16px
+.contact-intro a {
+    color: var(--navy);
+    font-weight: 700;
+    border-bottom: 1px solid var(--gold)
 }
 
-.contact-details li {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    font-size: 14px;
-    line-height: 1.6;
-    color: #d8e0e9;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, .14)
-}
-
-.contact-details svg {
-    color: var(--gold);
-    flex: none;
-    margin-top: 3px
-}
-
-.contact-details a {
-    transition: color .2s
-}
-
-.contact-details a:hover {
-    color: var(--gold)
-}
-
-.contact-formpanel {
-    padding: 42px 40px
-}
-
-.contact-formpanel form {
-    display: grid;
-    gap: 16px
-}
-
-.contact-row {
+.cf-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px
+    gap: 18px 14px
 }
 
-.contact-field {
+.cf-full {
+    grid-column: 1 / -1
+}
+
+.cf-field {
     display: grid;
-    gap: 7px;
-    min-width: 0
+    gap: 6px;
+    min-width: 0;
+    align-content: start
 }
 
-.contact-field span {
+.cf-field>span {
     font-size: 12px;
-    font-weight: 700;
-    color: var(--navy)
+    font-weight: 500;
+    color: #3d4f63
 }
 
-.contact-field input,
-.contact-field select,
-.contact-field textarea {
+.cf-field input,
+.cf-field select {
     width: 100%;
+    height: 44px;
     font: 14px 'DM Sans', sans-serif;
     color: var(--ink);
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 0;
-    padding: 12px 13px;
+    background: #fff;
+    border: 1px solid #b9c7d3;
+    border-radius: 4px;
+    padding: 0 13px;
     transition: border-color .2s, box-shadow .2s
 }
 
-.contact-field textarea {
-    resize: vertical;
-    min-height: 96px
+.cf-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 38px;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23142b4a' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center
 }
 
-.contact-field input:focus,
-.contact-field select:focus,
-.contact-field textarea:focus {
+.cf-field input:focus,
+.cf-field select:focus {
     outline: none;
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(197, 166, 107, .25)
+    box-shadow: 0 0 0 3px rgba(197, 166, 107, .28)
 }
 
-.contact-field input[aria-invalid="true"] {
-    border-color: #b3261e
+.cf-phone {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    gap: 10px
 }
 
-.contact-error {
-    font-style: normal;
-    font-size: 11.5px;
+.cf-code {
+    text-align: center;
+    padding: 0 6px !important
+}
+
+.cf-field.has-error>span {
     color: #b3261e
 }
 
-.contact-trap {
+.cf-field.has-error input,
+.cf-field.has-error select {
+    border-color: #b3261e
+}
+
+.cf-error {
+    font-style: normal;
+    font-size: 11.5px;
+    line-height: 1.4;
+    color: #b3261e
+}
+
+.cf-checks {
+    display: grid;
+    gap: 14px;
+    margin: 26px 0 26px
+}
+
+.cf-check {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #3d4f63;
+    cursor: pointer
+}
+
+.cf-check input {
+    flex: none;
+    width: 17px;
+    height: 17px;
+    margin: 1px 0 0;
+    accent-color: var(--navy);
+    cursor: pointer
+}
+
+.cf-check a {
+    color: var(--navy);
+    font-weight: 700;
+    text-decoration: underline
+}
+
+.cf-check.has-error span {
+    color: #b3261e
+}
+
+.cf-trap {
     position: absolute;
     left: -9999px;
     width: 1px;
@@ -174,35 +163,49 @@
     opacity: 0
 }
 
-.contact-fail {
-    margin: 0;
+.cf-fail {
+    margin: 0 0 14px;
     font-size: 13px;
     color: #b3261e
 }
 
-.contact-submit {
+.cf-submit {
     width: 100%;
+    height: 48px;
     border: 0;
+    border-radius: 999px;
+    background: var(--gold);
+    color: #17283e;
+    font: 700 14px 'DM Sans', sans-serif;
+    letter-spacing: .02em;
     cursor: pointer;
-    padding: 15px 20px
+    transition: background-color .25s, transform .25s
 }
 
-.contact-submit:disabled {
+.cf-submit:hover {
+    background: #d7b87e;
+    transform: translateY(-2px)
+}
+
+.cf-submit:disabled {
     opacity: .7;
-    cursor: progress
+    cursor: progress;
+    transform: none
 }
 
 .contact-success {
-    text-align: center;
-    padding: 50px 6px;
+    padding: 34px 28px;
     display: grid;
-    justify-items: center;
-    gap: 14px
+    justify-items: start;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--gold)
 }
 
 .contact-tick {
-    width: 58px;
-    height: 58px;
+    width: 54px;
+    height: 54px;
     border-radius: 50%;
     display: grid;
     place-items: center;
@@ -219,7 +222,7 @@
 .contact-success p {
     color: #68788b;
     line-height: 1.7;
-    max-width: 340px;
+    max-width: 380px;
     margin: 0;
     font-size: 14px
 }
@@ -231,38 +234,83 @@
     font: 700 12px 'DM Sans', sans-serif;
     border-bottom: 1px solid var(--gold);
     padding: 0 0 6px;
-    cursor: pointer;
-    margin-top: 6px
+    cursor: pointer
+}
+
+/* Decorative picture on the right: a photo with brand-coloured leaf shapes */
+.contact-visual {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    aspect-ratio: 1 / 1.15;
+    margin-left: auto
+}
+
+.contact-visual img {
+    position: absolute;
+    top: 4%;
+    right: 2%;
+    width: 74%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 0 150px 0 150px;
+    box-shadow: 0 20px 50px rgba(20, 43, 74, .2)
+}
+
+.cv-leaf {
+    position: absolute;
+    display: block
+}
+
+.cv-gold {
+    left: 0;
+    top: 18%;
+    width: 60%;
+    height: 58%;
+    background: var(--gold);
+    border-radius: 160px 0 160px 0;
+    opacity: .85
+}
+
+.cv-navy {
+    right: 14%;
+    bottom: 3%;
+    width: 36%;
+    height: 33%;
+    background: var(--navy);
+    border-radius: 0 100px 0 100px
+}
+
+.cv-chip {
+    right: 0;
+    top: 60%;
+    width: 17%;
+    height: 13%;
+    background: #d7b87e;
+    border-radius: 0 50px 0 50px
 }
 
 @media (max-width: 900px) {
     .contact-section {
-        padding: 80px 0
+        padding: 75px 0
     }
 
-    .contact-head {
-        margin-bottom: 36px
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 0
     }
 
-    .contact-box {
-        grid-template-columns: 1fr
-    }
-
-    .contact-side {
-        padding: 34px 28px
-    }
-
-    .contact-formpanel {
-        padding: 32px 26px
+    .contact-visual {
+        display: none
     }
 }
 
 @media (max-width: 520px) {
-    .contact-row {
+    .cf-grid {
         grid-template-columns: 1fr
     }
 
-    .contact-formpanel {
-        padding: 28px 20px
+    .cf-full {
+        grid-column: auto
     }
 }
